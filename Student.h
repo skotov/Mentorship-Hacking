@@ -15,10 +15,10 @@
 #include "TimeSlot.h"
 
 struct Student{
-    bool assigned;
+    bool unassigned;
     char gender;
     char campus;
-    int course;
+    unsigned int course;
     std::string uniqname;
     std::vector<TimeSlot> availability;
 };

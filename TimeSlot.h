@@ -12,10 +12,14 @@
 
 struct TimeSlot{
     bool assigned;
-    unsigned int hour;
+    unsigned int course;
+    
+    unsigned int hour;   //Student struct contains an array of TimeSlots
+    std::string day;     //these two fields are the only ones pertinent to Students
+    
     std::string mentor;
-    std::string day;
-    std::string course;
+    
+    
     
     TimeSlot(){
         day = "";

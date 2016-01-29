@@ -51,20 +51,50 @@ int main(int argc, const char * argv[]) {
         exit(1);
     }
     
-    vector<Group> groups;
+    vector<Group*> groups;
     
     //for each timeslot
     for (int i = 0; i < timeSlots.size(); ++i) {
         
+        Group * newestGroup = new Group;
+        newestGroup->t = &timeSlots[i];
+        int studentsFound = 0;
         
         //find the first five students in the students array that also have that time slot
+        for (int j = 0; j < students.size(); ++i) {
+            
+            if (students[j].unassigned && (students[j].course ==
+                                             timeSlots[i].course)) {
+                //now go through the Student's availability array to see if
+                //Student has the time slot
+                for (int k = 0; k < students[j].availability.size(); ++k) {
+                    
+                    //if the Student's day and hour match the timeSlot's day and hour
+                    if ((students[j].availability[k].day == timeSlots[i].day)
+                        &&
+                        (students[j].availability[k].hour == timeSlots[i].hour)) {
+                        
+                        //add Student to the group
+                        newestGroup->addStudent(&students[j]);
+                        studentsFound++;
+                    }//if
+                }//for
+            }//if
+            
+            if (studentsFound == 5) { //max 5 students per group
+                j = (int)students.size(); //terminates the loop
+            }
+            
+         }//for
+        
+        
         
         //flip each of their assigned bools
         
-        //create a Group object
+        
         
         //add to array of Group pointers
-    }
+    }//for
     
     //take care of the case when there are remaining students for each course
     

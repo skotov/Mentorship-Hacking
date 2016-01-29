@@ -11,22 +11,19 @@
 
 #include "Student.h"
 #include "TimeSlot.h"
+#include <vector>
 
 struct Group{
     TimeSlot * t;
-    Student * s1;
-    Student * s2;
-    Student * s3;
-    Student * s4;
-    Student * s5;
+    std::vector<Student*> groupMembers;
     
     Group(){
         t = nullptr;
-        s1 = nullptr;
-        s2 = nullptr;
-        s3 = nullptr;
-        s4 = nullptr;
-        s5 = nullptr;
+    }
+    
+    void addStudent(Student * ptr){
+        ptr->unassigned = false;
+        groupMembers.push_back(ptr);
     }
 };
 #endif
